@@ -1,9 +1,8 @@
 describe("stack", function() {
   var stack;
 
-  /* BEGIN DO NOT MODIFY */
+  // Before each test runs, create a new Stack
   beforeEach(function() {
-    // Before each test runs, create a new Stack
     if (runner.is('src/functional') || runner.is('src/functional-shared')) {
       stack = makeStack();
     } else if (runner.is('src/prototypal')) {
@@ -12,7 +11,6 @@ describe("stack", function() {
       stack = new Stack();
     }
   });
-  /* END DO NOT MODIFY */
 
   // Any stack implementation should have the following methods
   it('should have "push", "pop", and "size" methods', function() {
@@ -21,21 +19,39 @@ describe("stack", function() {
     expect(stack.size).to.be.a('function');
   });
 
-  it('should add pushed items to the top of the stack', function() {
-    // Fill out the body of the test here
+  it('size should initialize to 0', function() {
+    expect(stack.size()).to.equal(0);
+  });
+  // Organize your tests with nested describe() statements
+  // Use '#methodName()' to denote tests that focus on a certain method
+  describe('#push()', function() {
+    it('should take one argument', function() {
+      // Make sure push() takes a single argument using (see http://mdn.io/Function.length)
+      expect(stack.push.length).to.equal(1);
+    });
+    it('should add something to the stack', function() {
+      expect(stack.size()).to.equal(0);
+      stack.push('element');
+      expect(stack.size()).to.equal(1);
+    });
   });
 
-  it('should remove popped items from the top of the stack', function() {
-    // Fill out the body of the test here
+  describe('#pop()', function() {
+    it('should not decrease size below 0', function() {
+      stack.pop();
+      expect(stack.size()).to.equal(0);
+    });
+    it('should return "undefined" from an empty stack', function() {
+      stack.push('hello');
+      stack.pop();
+      expect(stack.pop()).to.equal(undefined);
+    });
+    it('should decrease size by 1', function() {
+      stack.push('element');
+      stack.push('element2');
+      expect(stack.pop()).to.equal('element2');
+      expect(stack.size()).to.equal(1);
+    });
   });
 
-  it('should push and pop multiple items in the right order (LIFO)', function() {
-    // Fill out the body of the test here
-  });
-
-  it('should not error when popping from an empty stack', function() {
-    // Fill out the body of the test here
-  });
-
-  // Hey! Add more tests here if you can think of ways to test your stack more thoroughly
 });
