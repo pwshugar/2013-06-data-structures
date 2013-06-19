@@ -21,5 +21,13 @@ describe("queue", function() {
     expect(queue.size).to.be.a('function');
   });
 
+  it('size should initialize to 0', function() {
+    expect(queue.size()).to.equal(0);
+  });
+
+//  describe('#enqueue()', function() {
+//    it('should ')
+//  });
+
   // Hey! Add tests here that thoroughly test the functionality of your queue
 });
