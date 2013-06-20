@@ -1,11 +1,9 @@
 var Stack = function() {
-  var stack = Object.create(stackMeths);
-  stack.storage = {};
-  stack.sizeVar = 0;
-  return stack;
+  this.storage = {};
+  this.sizeVar = 0;
 };
 
-var stackMeths = {};
+var stackMeths = Stack.prototype;
 
 stackMeths.push = function(value){
   this.storage[this.sizeVar] = value;
