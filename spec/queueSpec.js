@@ -25,16 +25,52 @@ describe("queue", function() {
     expect(queue.size()).to.equal(0);
   });
 
- describe('#enqueue()', function() {
-   it('should increase size by 1 when the first element is added to the queue', function() {
-     queue.enqueue('element');
-     expect(queue.size()).to.equal(1);
-   });
-   it('should increase size by n when n elements are added to the queue', function() {
-     queue.enqueue('element');
-     queue.enqueue('element');
-     expect(queue.size()).to.equal(2);
-   }); });
+  describe('#enqueue()', function() {
+    it('should increase size by 1 when the first element is added to the queue', function() {
+      queue.enqueue('element');
+      expect(queue.size()).to.equal(1);
+    });
+    it('should increase size by "n" when "n" elements are added to the queue', function() {
+      queue.enqueue('element');
+      queue.enqueue('element');
+      expect(queue.size()).to.equal(2);
+    });
+  });
 
-  // Hey! Add tests here that thoroughly test the functionality of your queue
+  describe('#dequeue()', function() {
+    it('should decrease size by 1 when an element is removed from the queue', function() {
+      queue.enqueue('element1');
+      queue.enqueue('element2');
+      queue.dequeue();
+      expect(queue.size()).to.equal(1);
+    });
+    it('should decrease size by "n" when "n" elements are removed from the queue', function() {
+      queue.enqueue('element1');
+      queue.enqueue('element2');
+      queue.dequeue();
+      queue.dequeue();
+      expect(queue.size()).to.equal(0);
+    });
+    it('should not produce a negative size', function() {
+      queue.dequeue();
+      expect(queue.size()).to.equal(0);
+    });
+    it('should return the removed element', function() {
+      queue.enqueue('element');
+      expect(queue.dequeue()).to.equal('element');
+      queue.enqueue('element2');
+      expect(queue.dequeue()).to.equal('element2');
+    });
+    it('should return "undefined" from an empty queue', function() {
+      queue.enqueue('element');
+      queue.dequeue();
+      expect(queue.dequeue()).to.equal(undefined);
+    });
+    it('should return the first element in the queue', function() {
+      queue.enqueue('element');
+      queue.enqueue('element2');
+      expect(queue.dequeue()).to.equal('element');
+    });
+  });
+
 });
