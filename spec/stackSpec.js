@@ -29,8 +29,7 @@ describe("stack", function() {
       // Make sure push() takes a single argument using (see http://mdn.io/Function.length)
       expect(stack.push.length).to.equal(1);
     });
-    it('should add something to the stack', function() {
-      expect(stack.size()).to.equal(0);
+    it('should increase size by 1 when a new item is added to the stack', function() {
       stack.push('element');
       expect(stack.size()).to.equal(1);
     });

@@ -25,9 +25,16 @@ describe("queue", function() {
     expect(queue.size()).to.equal(0);
   });
 
-//  describe('#enqueue()', function() {
-//    it('should ')
-//  });
+ describe('#enqueue()', function() {
+   it('should increase size by 1 when the first element is added to the queue', function() {
+     queue.enqueue('element');
+     expect(queue.size()).to.equal(1);
+   });
+   it('should increase size by n when n elements are added to the queue', function() {
+     queue.enqueue('element');
+     queue.enqueue('element');
+     expect(queue.size()).to.equal(2);
+   }); });
 
   // Hey! Add tests here that thoroughly test the functionality of your queue
 });
