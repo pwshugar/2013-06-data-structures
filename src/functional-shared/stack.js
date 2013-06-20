@@ -1,4 +1,3 @@
-
 var makeStack = function(){
   var stack = {};
   stack.storage = {};
@@ -7,7 +6,7 @@ var makeStack = function(){
   stack.pop = pop;
   stack.size = size;
   return stack;
-};
+}; 
 
 var push = function(value){
   this.storage[this.sizeVar] = value;
@@ -24,5 +23,3 @@ var pop = function(){
 var size = function(){
   return this.sizeVar;
 };
-
-
